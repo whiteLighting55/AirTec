@@ -84,10 +84,16 @@ class FrontEnd(object):
 
             frame = frame_read.frame
             # battery n.
-            text = "Battery: {}%".format(self.tello.get_battery())
-            cv2.putText(frame, text, (5, 720 - 5),
+            battery_text = "Battery: {}%".format(self.tello.get_battery())
+            cv2.putText(frame, battery_text, (5, 720 - 5),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+            # height n.
+            height_text = 'Height: {}%'.format(self.tello.get_height())
+            cv2.putText(frame, height_text, (5, 720 -10),
+                cv2.FONT_ITALIC, 1, (255, 0, 0), 2)
+
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
             frame = np.rot90(frame)
             frame = np.flipud(frame)
 
