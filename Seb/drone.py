@@ -31,8 +31,8 @@ class FrontEnd(object):
 
         # Creat pygame window and icon
         pygame.display.set_caption("Seb Mechatronics XD")
-        icon = pygame.image.load('ccrm.png')
-        pygame.display.set_icon(icon)
+        #icon = pygame.image.load('ccrm.png') estos los comenté porque no jalan con github
+        #pygame.display.set_icon(icon)
 
         self.screen = pygame.display.set_mode([960, 720])
 
