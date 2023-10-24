@@ -18,7 +18,7 @@ running = True
 while running:
     # Obtener el fotograma desde el dron Tello
     frame = tello.get_frame_read().frame
-
+    #rotated_frame = cv2.rotate(frame,cv2.ROTATE_90_CLOCKWISE)
     # Convertir el fotograma a escala de grises
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
@@ -26,7 +26,7 @@ while running:
     edges = cv2.Canny(gray_frame, 50, 150)
 
     # Buscar líneas en el fotograma
-    lines = cv2.HoughLinesP(edges, 1, numpy.pi/ 180, threshold=100, minLineLength=100, maxLineGap=50)
+    lines = cv2.HoughLinesP(edges, 1, numpy.pi/180, threshold=100, minLineLength=100, maxLineGap=50)
 
     # Dibujar las líneas encontradas en el fotograma original
     if lines is not None:
@@ -35,7 +35,7 @@ while running:
             cv2.line(frame, (x1, y1), (x2, y2), (0, 255, 0), 2)
 
     # Convertir el fotograma de OpenCV a formato de superficie de pygame
-    frame_surface = pygame.surfarray.make_surface(cv2.flip(frame, 1))
+    frame_surface = pygame.surfarray.make_surface(cv2.flip(frame, 1)), 
     win.blit(frame_surface, (0, 0))
     pygame.display.update()
 
