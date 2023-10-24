@@ -1,6 +1,7 @@
 import cv2
 import pygame
 from djitellopy import Tello
+import numpy
 
 # Inicializar el dron Tello
 tello = Tello()
@@ -25,7 +26,7 @@ while running:
     edges = cv2.Canny(gray_frame, 50, 150)
 
     # Buscar líneas en el fotograma
-    lines = cv2.HoughLinesP(edges, 1, threshold=100, minLineLength=100, maxLineGap=50)
+    lines = cv2.HoughLinesP(edges, 1, numpy.pi/ 180, threshold=100, minLineLength=100, maxLineGap=50)
 
     # Dibujar las líneas encontradas en el fotograma original
     if lines is not None:
