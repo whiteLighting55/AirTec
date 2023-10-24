@@ -10,12 +10,12 @@ tello = Tello()
 # Definir funciones para las acciones del dron
 def takeoff_and_land():
     tello.takeoff()
-    time.sleep(8)  # Esperar 5 segundos (puedes ajustar el tiempo)
+    time.sleep(8)  # Esperar 8 segundos (puedes ajustar el tiempo)
     tello.land()
 
 def fly_straight():
     tello.takeoff()
-    tello.move_forward(100)  # Volar hacia adelante 100 cm (puedes ajustar la distancia)
+    tello.move_forward(50)  # Volar hacia adelante 50 cm (puedes ajustar la distancia)
     tello.land()
 
 # Iniciar la rutina autónoma al presionar "g"
