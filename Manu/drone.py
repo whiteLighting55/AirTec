@@ -25,7 +25,7 @@ while running:
     edges = cv2.Canny(gray_frame, 50, 150)
 
     # Buscar líneas en el fotograma
-    lines = cv2.HoughLinesP(edges, 1, cv2.CV_PI / 180, threshold=100, minLineLength=100, maxLineGap=50)
+    lines = cv2.HoughLinesP(edges, 1, threshold=100, minLineLength=100, maxLineGap=50)
 
     # Dibujar las líneas encontradas en el fotograma original
     if lines is not None:
