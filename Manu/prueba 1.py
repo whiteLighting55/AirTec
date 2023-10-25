@@ -64,6 +64,7 @@ class FrontEnd(object):
         should_stop = False
         while not should_stop:
 
+            
             for event in pygame.event.get():
                 if event.type == pygame.USEREVENT + 1:
                     self.update()
