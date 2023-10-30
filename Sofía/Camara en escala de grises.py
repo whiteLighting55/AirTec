@@ -20,9 +20,10 @@ while True:
     # Convertir el frame a escala de grises
     imagen_gris = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     edges = cv2.Canny(imagen_gris,100,200)
+    blur = cv2.GaussianBlur(imagen_gris,(7,7),0)
     # Mostrar la imagen en escala de grises
     cv2.imshow('Imagen en escala de grises', imagen_gris)
-
+    cv2.imshow("Blur",blur)
     # Mostrar el frame original
     cv2.imshow('Camera Feed', frame)
     cv2.imshow("Fronteras",edges)
