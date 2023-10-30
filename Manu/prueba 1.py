@@ -99,6 +99,7 @@ class FrontEnd(object):
             frame = np.flipud(frame)
             frame2 = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
             frame2 = cv2.merge([frame2,frame2, frame2])
+            frame2= cv2.Canny(frame2, 100, 200)
             frame = pygame.surfarray.make_surface(frame2)
             self.screen.blit(frame, (0, 0))
             pygame.display.update()
