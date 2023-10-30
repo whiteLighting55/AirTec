@@ -19,10 +19,10 @@ running = True
 while running:
     # Obtener el fotograma desde el dron Tello
     frame = tello.get_frame_read().frame
-    frame = cv2.rotate(frame)
-
+    frame = np.rot90(frame)
+    
     # Convertir el fotograma a escala de grises
-    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    gray_frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
 
     # Aplicar detección de bordes para resaltar las líneas
     edges = cv2.Canny(gray_frame, 50, 150)
