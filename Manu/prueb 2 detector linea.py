@@ -101,9 +101,8 @@ class FrontEnd(object):
             frame2 = cv2.merge([frame2,frame2, frame2])
             frame2= cv2.Canny(frame2, 100, 200)
             frame = pygame.surfarray.make_surface(frame2)
-            self.screen.blit(frame, (0, 0))
+            self.screen.blit(frame,(0,0))
             pygame.display.update()
-
             time.sleep(1 / FPS)
 
         # Call it always before finishing. To deallocate resources.
