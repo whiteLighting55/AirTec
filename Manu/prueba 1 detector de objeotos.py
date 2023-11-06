@@ -1,8 +1,8 @@
 import pygame
 import cv2
 from pygame.locals import *
-from djitellopy import Tello
 import numpy as np
+from djitellopy import Tello
 
 # Inicializar el dron Tello
 tello = Tello()
@@ -27,10 +27,9 @@ while running:
 
     # Capturar el fotograma del video del dron
     frame = tello.get_frame_read().frame
-    frame = np.rot90(frame)
 
     # Convertir el fotograma a escala de grises
-    gray_frame = cv2.cvtColor(frame, cv2.COLOR_RGB2GRAY)
+    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
     # Detectar contornos en la imagen
     _, thresholded = cv2.threshold(gray_frame, 240, 255, cv2.THRESH_BINARY)
@@ -40,13 +39,13 @@ while running:
     cv2.drawContours(frame, contours, -1, (0, 255, 0), 3)
 
     # Mostrar el fotograma con los contornos en la ventana de Pygame
-    frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-    frame = cv2.flip(frame, 0)
+    #frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    frame = np.rot90(frame)
+    frame = np.flipud(frame)
     frame = pygame.surfarray.make_surface(frame)
     win.blit(frame, (0, 0))
     pygame.display.update()
 
 # Detener la transmisión de video y cerrar la ventana de Pygame
-tello.stop_video()
 tello.land()
 pygame.quit()
