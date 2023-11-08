@@ -30,10 +30,11 @@ while running:
 
     # Convertir el fotograma a escala de grises
     gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    edges = cv2.Canny(gray_frame, 100,200)
 
 
     # Detectar contornos en la imagen
-    _, thresholded = cv2.threshold(gray_frame, 240, 255, cv2.THRESH_BINARY)
+    _, thresholded = cv2.threshold(edges, 240, 255, cv2.THRESH_BINARY)
     contours, _ = cv2.findContours(thresholded, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
     # Dibujar círculos y detectar figuras geométricas
@@ -48,6 +49,7 @@ while running:
     frame = pygame.surfarray.make_surface(frame)
     win.blit(frame, (0, 0))
     pygame.display.update()
+    cv2.imshow("limites",edges)
 
 # Detener la transmisión de video y cerrar la ventana de Pygame
 tello.stop_video()
