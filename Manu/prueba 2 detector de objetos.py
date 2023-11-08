@@ -11,29 +11,13 @@ tello = Tello()
 tello.connect()
 
 # Iniciar la transmisión de video
-tello.start_video()
+tello.streamoff()
+tello.streamon()
 
 # Inicializar Pygame
 pygame.init()
 pygame.display.set_caption("Tello Video Stream")
 win = pygame.display.set_mode((960, 720))
-
-def detect_shapes(contour):
-    epsilon = 0.04 * cv2.arcLength(contour, True)
-    approx = cv2.approxPolyDP(contour, epsilon, True)
-    if len(approx) == 3:
-        return "Triángulo"
-    elif len(approx) == 4:
-        x, y, w, h = cv2.boundingRect(approx)
-        aspect_ratio = float(w) / h
-        if 0.95 <= aspect_ratio <= 1.05:
-            return "Cuadrado"
-        else:
-            return "Rectángulo"
-    elif len(approx) == 5:
-        return "Pentágono"
-    else:
-        return "Otro"
 
 running = True
 while running:
@@ -65,10 +49,8 @@ while running:
             cv2.circle(frame, center, radius, (0, 255, 0), 3)
 
     for contour in contours:
-        shape = detect_shapes(contour)
         cv2.drawContours(frame, [contour], 0, (0, 255, 0), 3)
         x, y = contour[0][0]
-        cv2.putText(frame, shape, (x, y), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 255, 255), 2)
 
     # Mostrar el fotograma con los círculos y las figuras geométricas en la ventana de Pygame
     frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
