@@ -52,6 +52,5 @@ while running:
     cv2.imshow("limites",edges)
 
 # Detener la transmisión de video y cerrar la ventana de Pygame
-tello.stop_video()
 tello.land()
 pygame.quit()

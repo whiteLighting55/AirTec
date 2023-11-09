@@ -21,7 +21,7 @@ class FrontEnd(object):
         The controls are:
             - T: Takeoff
             - L: Land
-            - Arrow keys: Forward, backward, left and right.
+            - Arrow keys: Forward, backward, left and right.ll
             - A and D: Counter clockwise and clockwise rotations (yaw)
             - W and S: Up and down."""
 
