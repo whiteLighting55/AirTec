@@ -87,7 +87,7 @@ class FrontEnd(object):
             battery_text = "Battery: {}%".format(self.tello.get_battery())
             cv2.putText(frame, battery_text, (5, 720 - 5),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
-
+    
             # height n.
             height_text = 'Height: {}%'.format(self.tello.get_height())
             cv2.putText(frame, height_text, (5, 720 -10),
